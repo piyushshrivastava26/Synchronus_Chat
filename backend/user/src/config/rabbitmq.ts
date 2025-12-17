@@ -33,7 +33,7 @@ export const connectRabbitMQ = async () => {
 
         channel = await connection.createChannel()
 
-        console.log("RabbitMQ connection established successfully")
+        console.log("🐰 RabbitMQ connection established successfully")
     } 
     catch (error) {
         console.log("Failed to connect to RabbitMQ:", error)
@@ -44,8 +44,9 @@ export const connectRabbitMQ = async () => {
 export const publishToQueue = async (queueName:string, message:any) => {
     
     if(!channel) {
-        console.log("RabbitMQ channel is not initialized")
-        return
+        // console.log("RabbitMQ channel is not initialized")
+        // return
+        throw new Error("RabbitMQ channel is not initialized")
     }
 
     // CREATES THE QUEUE
